@@ -1,0 +1,2 @@
+$mnupn = Get-User -ResultSize Unlimited | Where { -Not [string]::IsNullOrEmpty($_.WindowsEmailAddress) }
+$mnupn | ForEach { Set-User -Identity $_.Guid.ToString() -UserPrincipalName $_.WindowsEmailAddress.ToString() }
